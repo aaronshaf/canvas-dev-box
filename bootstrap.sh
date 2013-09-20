@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+echo 
+echo 
+echo Setting up VM for Canvas LMS. This should take about 20 minutes. Get some breakfast.
+echo
+echo
+
+sudo add-apt-repository ppa:chris-lea/redis-server -y
+sudo add-apt-repository ppa:chris-lea/node.js -y
 sudo apt-get update
 
 sudo apt-get install git-core python-software-properties python g++ make \
@@ -7,16 +15,12 @@ sudo apt-get install git-core python-software-properties python g++ make \
   libxml2-dev libxslt1-dev libsqlite3-dev libhttpclient-ruby \
   imagemagick irb1.9.1 libxmlsec1-dev postgresql \
   python-software-properties libcurl3-dev libpq-dev \
-  redis-server expect-lite -y --quiet
+  redis-server expect-lite nodejs -y --quiet
 
 sudo su -l postgres -c 'psql -c "CREATE ROLE root WITH SUPERUSER LOGIN;"'
 sudo su -l postgres -c 'psql -c "CREATE ROLE vagrant WITH SUPERUSER LOGIN;"'
 sudo su -l postgres -c 'createdb canvas_development'
 sudo su -l postgres -c 'createdb canvas_queue_development'
-
-sudo add-apt-repository ppa:chris-lea/node.js -y
-sudo apt-get update
-sudo apt-get install nodejs -y
 
 sudo npm install -g coffee-script -y
 
@@ -26,7 +30,7 @@ cp /vagrant/canvas/config/database.yml.example /vagrant/canvas/config/database.y
 cp /vagrant/config/security.yml /vagrant/canvas/config/security.yml
 cp /vagrant/config/development-local.rb /vagrant/canvas/config/environments/development-local.rb
 cp /vagrant/config/cache_store.yml /vagrant/canvas/config/cache_store.yml
-# cp /vagrant/config/redis.yml /vagrant/canvas/config/redis.yml
+cp /vagrant/config/redis.yml /vagrant/canvas/config/redis.yml
 cp /vagrant/config/domain.yml /vagrant/canvas/config/domain.yml
 
 cd /vagrant/canvas
