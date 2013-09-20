@@ -1,4 +1,4 @@
-**canvas-box** sets up a virtual machine for developing [Canvas LMS](https://github.com/instructure/canvas-lms).
+**canvas-box** sets up a virtual machine for developing [Canvas LMS](https://github.com/instructure/canvas-lms). Inspired by [jhuckabee/canvas-lms-dev-box](https://github.com/jhuckabee/canvas-lms-dev-box/).
 
 ### Step 1
 Install [Vagrant](http://www.vagrantup.com/).
