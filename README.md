@@ -19,3 +19,5 @@ Eat breakfast.
 ### Step 4
 
 Open *localhost:3000*
+user: a@a.com
+password: password
