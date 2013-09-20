@@ -18,7 +18,7 @@ Eat breakfast. With the precise32.box already downloaded, it took about 25-30 mi
 
 ### Step 4
 
-Open ```http://localhost:3000``` in your browser. Your initial Canvas user is ```a@a.com``` with a password of ```password```.
+Open [http://localhost:3000](http://localhost:3000) in your browser. Your initial Canvas user is ```a@a.com``` with a password of ```password```.
 
 To SSH into the guest machine, ```vagrant ssh``` from your project directory.
 
