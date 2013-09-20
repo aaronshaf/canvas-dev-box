@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 echo 
-echo 
 echo Setting up VM for Canvas LMS. This should take about 20 minutes. Get some breakfast.
-echo
 echo
 
 sudo add-apt-repository ppa:chris-lea/redis-server -y
