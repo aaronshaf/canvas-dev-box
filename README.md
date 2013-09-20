@@ -12,7 +12,7 @@ vagrant up
 ```
 
 ### Step 3
-Eat breakfast. It took about 16 minutes on my MacBook Pro (16gb).
+Eat breakfast. It took about 16m30s on my MacBook Pro (16gb).
 
 <img src="http://www.minutedeli.com/breakfast.jpg" />
 
