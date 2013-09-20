@@ -11,6 +11,7 @@ sudo apt-get install git-core python-software-properties python g++ make \
 
 #ruby-bundler 
 
+sudo su -l postgres -c 'psql -c "CREATE ROLE root WITH SUPERUSER LOGIN;"'
 sudo su -l postgres -c 'psql -c "CREATE ROLE vagrant WITH SUPERUSER LOGIN;"'
 sudo su -l postgres -c 'createdb canvas_development'
 sudo su -l postgres -c 'createdb canvas_queue_development'
@@ -35,8 +36,9 @@ mkdir ~/gems
 export GEM_HOME=~/gems
 
 cd /vagrant/canvas
-gem install bundler
-$GEM_HOME/bin/bundle install --without mysql
-expect-lite -c ../config/db-initial-setup.elt
-$GEM_HOME/bin/bundle exec rake canvas:compile_assets
-$GEM_HOME/bin/bundle exec script/server
+sudo su -c 'apt-get install ruby-bundler -y' #this works, but not sudo?
+
+bundle install --without mysql
+expect-lite -c /vagrant/config/db-initial-setup.elt
+bundle exec rake canvas:compile_assets
+bundle exec script/server
