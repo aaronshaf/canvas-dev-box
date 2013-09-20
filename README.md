@@ -52,3 +52,7 @@ To destroy and rebuild:
 vagrant destroy
 vagrant up
 ```
+
+## To do
+
+* Use [sstephenson/rbenv](https://github.com/sstephenson/rbenv)
