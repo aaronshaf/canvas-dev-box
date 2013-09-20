@@ -18,11 +18,11 @@ Eat breakfast. With the precise32.box already downloaded, it took about 25-30 mi
 
 ### Step 4
 
-Open *localhost:3000* in your browser. Your initial Canvas user is *a@a.com* with a password of *password*.
+Open *http://localhost:3000* in your browser. Your initial Canvas user is *a@a.com* with a password of *password*.
+
+To SSH into the guest machine, ```vagrant ssh``` from your project directory.
 
 Changes in your project directory [are synced](http://docs.vagrantup.com/v2/getting-started/synced_folders.html) to the ```/vagrant``` directory in your guest machine.
-
-To SSH into the guest machine: ```vagrant ssh```
 
 With Vagrant, you can [suspend, halt, or destroy the guest machine](http://docs.vagrantup.com/v2/getting-started/teardown.html).
 
