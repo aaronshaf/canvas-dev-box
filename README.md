@@ -21,3 +21,13 @@ Eat breakfast.
 Open *localhost:3000*
 
 user: a@a.com, password: password
+
+Changes in your project directory [are synced](http://docs.vagrantup.com/v2/getting-started/synced_folders.html) to the ```/vagrant``` directory in your guest machine.
+
+To SSH into the guest machine:
+
+```bash
+vagrant ssh
+```
+
+With Vagrant, you can [suspend, halt, or destroy the guest machine](http://docs.vagrantup.com/v2/getting-started/teardown.html).
