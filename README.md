@@ -1,8 +1,7 @@
 **canvas-box** sets up a virtual machine for developing [Canvas LMS](https://github.com/instructure/canvas-lms). Inspired by [jhuckabee/canvas-lms-dev-box](https://github.com/jhuckabee/canvas-lms-dev-box/).
 
 ### Step 1
-Install [Vagrant](http://www.vagrantup.com/).
-Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+Install [Vagrant](http://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 
 ### Step 2
 ```
@@ -19,9 +18,7 @@ Eat breakfast. With the precise32.box already downloaded, it took about 25-30 mi
 
 ### Step 4
 
-Open *localhost:3000*
-
-user: a@a.com, password: password
+Open *localhost:3000* in your browser. Your initial Canvas user is *a@a.com* with a password of *password*.
 
 Changes in your project directory [are synced](http://docs.vagrantup.com/v2/getting-started/synced_folders.html) to the ```/vagrant``` directory in your guest machine.
 
