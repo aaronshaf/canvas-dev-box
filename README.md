@@ -4,7 +4,7 @@
 Install [Vagrant](http://www.vagrantup.com/).
 
 ### Step 2
-```bash
+```
 git clone https://github.com/aaronshaf/canvas-box.git
 cd canvas-box
 git clone https://github.com/instructure/canvas-lms.git canvas
@@ -30,14 +30,14 @@ With Vagrant, you can [suspend, halt, or destroy the guest machine](http://docs.
 
 To suspend and resume:
 
-```bash
+```
 vagrant suspend
 vagrant up
 ```
 
 To shutdown and resume:
 
-```bash
+```
 vagrant halt
 vagrant up
 ```
@@ -45,7 +45,7 @@ vagrant up
 To destroy and rebuild:
 
 
-```bash
+```
 vagrant destroy
 vagrant up
 ```
