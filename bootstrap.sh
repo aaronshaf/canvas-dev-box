@@ -9,8 +9,6 @@ sudo apt-get install git-core python-software-properties python g++ make \
   python-software-properties libcurl3-dev libpq-dev \
   redis-server expect-lite -y
 
-#ruby-bundler 
-
 sudo su -l postgres -c 'psql -c "CREATE ROLE root WITH SUPERUSER LOGIN;"'
 sudo su -l postgres -c 'psql -c "CREATE ROLE vagrant WITH SUPERUSER LOGIN;"'
 sudo su -l postgres -c 'createdb canvas_development'
