@@ -33,7 +33,7 @@ mkdir ~/gems
 export GEM_HOME=~/gems
 
 cd /vagrant/canvas
-sudo su -c 'apt-get install ruby-bundler -y' #this works, but not sudo?
+sudo su -c 'apt-get install ruby-bundler -y' #this works, but not simply sudo?
 
 bundle install --without mysql
 expect-lite -c /vagrant/config/db-initial-setup.elt
