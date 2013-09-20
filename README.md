@@ -1,4 +1,4 @@
-**canvas-box** is a virtual machine for developing Canvas LMS.
+**canvas-box** is a virtual machine for developing [Canvas LMS](https://github.com/instructure/canvas-lms).
 
 ### Step 1
 Install [Vagrant](http://www.vagrantup.com/).
