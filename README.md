@@ -2,6 +2,7 @@
 
 ### Step 1
 Install [Vagrant](http://www.vagrantup.com/).
+Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 ### Step 2
 ```
