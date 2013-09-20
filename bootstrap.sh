@@ -29,13 +29,9 @@ cp /vagrant/config/cache_store.yml /vagrant/canvas/config/cache_store.yml
 # cp /vagrant/config/redis.yml /vagrant/canvas/config/redis.yml
 cp /vagrant/config/domain.yml /vagrant/canvas/config/domain.yml
 
-mkdir ~/gems
-export GEM_HOME=~/gems
-
 cd /vagrant/canvas
-sudo su -c 'apt-get install ruby-bundler -y' #this works, but not simply sudo?
-
-bundle install --quiet --without mysql
+sudo gem install bundler
+sudo bundle install --quiet --without mysql
 expect-lite -c /vagrant/config/db-initial-setup.elt
-bundle exec rake canvas:compile_assets
-bundle exec script/server
+sudo bundle exec rake canvas:compile_assets
+sudo bundle exec script/server
