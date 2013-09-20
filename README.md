@@ -27,3 +27,25 @@ Changes in your project directory [are synced](http://docs.vagrantup.com/v2/gett
 To SSH into the guest machine: ```vagrant ssh```
 
 With Vagrant, you can [suspend, halt, or destroy the guest machine](http://docs.vagrantup.com/v2/getting-started/teardown.html).
+
+To suspend and resume:
+
+```bash
+vagrant suspend
+vagrant up
+```
+
+To shutdown and resume:
+
+```bash
+vagrant halt
+vagrant up
+```
+
+To destroy and rebuild:
+
+
+```bash
+vagrant destroy
+vagrant up
+```
