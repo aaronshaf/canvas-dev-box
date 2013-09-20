@@ -1,0 +1,12 @@
+development:
+  servers:
+  - redis://localhost
+
+test:
+  database: 1
+  servers:
+  - redis://localhost
+
+production:
+  servers:
+  - redis://localhost

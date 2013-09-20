@@ -1,4 +1,1 @@
-canvas-box
-==========
-
-Virtual machine for developing and testing Canvas LMS
+canvas-box is a virtual machine for developing and testing Canvas LMS.
