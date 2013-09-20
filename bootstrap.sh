@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo 
-echo Setting up VM for Canvas LMS. This should take about 20 minutes. Get some breakfast.
+echo Setting up VM for Canvas LMS. This should take about 25-30 minutes. Get some breakfast.
 echo
 
 sudo su
