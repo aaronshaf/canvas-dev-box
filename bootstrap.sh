@@ -23,7 +23,6 @@ sudo npm install -g coffee-script -y
 sudo update-alternatives --set ruby /usr/bin/ruby1.9.1
 
 cp /vagrant/canvas/config/database.yml.example /vagrant/canvas/config/database.yml
-
 cp /vagrant/config/security.yml /vagrant/canvas/config/security.yml
 cp /vagrant/config/development-local.rb /vagrant/canvas/config/environments/development-local.rb
 cp /vagrant/config/cache_store.yml /vagrant/canvas/config/cache_store.yml
