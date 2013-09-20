@@ -7,7 +7,7 @@ sudo apt-get install git-core python-software-properties python g++ make \
   libxml2-dev libxslt1-dev libsqlite3-dev libhttpclient-ruby \
   imagemagick irb1.9.1 libxmlsec1-dev postgresql \
   python-software-properties libcurl3-dev libpq-dev \
-  redis-server expect-lite -y
+  redis-server expect-lite -y --quiet
 
 sudo su -l postgres -c 'psql -c "CREATE ROLE root WITH SUPERUSER LOGIN;"'
 sudo su -l postgres -c 'psql -c "CREATE ROLE vagrant WITH SUPERUSER LOGIN;"'
