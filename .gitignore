@@ -1,3 +1,4 @@
 canvas
 canvas-modules
 .vagrant
+*.box
