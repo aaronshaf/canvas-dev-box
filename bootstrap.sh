@@ -1,35 +1,60 @@
-#!/usr/bin/env bash
-
 echo 
-echo Setting up VM for Canvas LMS. This should take about 25-30 minutes. Get some breakfast.
+echo --- installing some basic dependencies ---
 echo
 
-sudo su
-apt-get update
-
-apt-get install git-core python-software-properties python g++ make \
-  ruby1.9.1 ruby1.9.1-dev zlib1g-dev rubygems1.9.1 \
-  libxml2-dev libxslt1-dev libsqlite3-dev libhttpclient-ruby \
-  imagemagick irb1.9.1 libxmlsec1-dev postgresql \
+sudo apt-get update -qq
+sudo apt-get install python-software-properties git-core python g++ make \
+  zlib1g-dev  \
+  libxml2-dev libxslt1-dev libsqlite3-dev  \
+  imagemagick  libxmlsec1-dev postgresql \
   python-software-properties libcurl3-dev libpq-dev \
-  expect-lite -y
+  expect-lite screen --quiet -y
 
-add-apt-repository ppa:chris-lea/redis-server -y
-apt-get update
-apt-get install redis-server -y
+echo 
+echo --- installing redis ---
+echo
 
-add-apt-repository ppa:chris-lea/node.js -y
-apt-get update
-apt-get install nodejs -y
+sudo add-apt-repository ppa:chris-lea/redis-server -y
+sudo apt-get update -qq
+sudo apt-get install redis-server --quiet -y
 
-su -l postgres -c 'psql -c "CREATE ROLE root WITH SUPERUSER LOGIN;"'
-su -l postgres -c 'psql -c "CREATE ROLE vagrant WITH SUPERUSER LOGIN;"'
-su -l postgres -c 'createdb canvas_development'
-su -l postgres -c 'createdb canvas_queue_development'
+echo 
+echo --- installing node, npm, coffeescript ---
+echo
 
-npm install -g coffee-script -y
+sudo add-apt-repository ppa:chris-lea/node.js -y
+sudo apt-get update -qq
+sudo apt-get install nodejs -y
+sudo npm install -g coffee-script --quiet -y
 
-update-alternatives --set ruby /usr/bin/ruby1.9.1
+echo 
+echo --- installing ruby, bundler ---
+echo
+
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+export PATH="$HOME/.rbenv/bin:$PATH"
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+eval "$(rbenv init -)"
+rbenv install 1.9.3-p448
+rbenv rehash
+
+rm -fr ~/.rbenv/plugins/bundler
+git clone git://github.com/carsomyr/rbenv-bundler.git ~/.rbenv/plugins/bundler
+
+cd /vagrant/canvas
+rbenv global 1.9.3-p448
+gem install bundler
+
+sudo su -l postgres -c 'psql -c "CREATE ROLE root WITH SUPERUSER LOGIN;"'
+sudo su -l postgres -c 'psql -c "CREATE ROLE vagrant WITH SUPERUSER LOGIN;"'
+sudo su -l postgres -c 'createdb canvas_development'
+sudo su -l postgres -c 'createdb canvas_queue_development'
+
+echo 
+echo --- copying configuration files ---
+echo
 
 cp /vagrant/canvas/config/database.yml.example /vagrant/canvas/config/database.yml
 cp /vagrant/config/security.yml /vagrant/canvas/config/security.yml
@@ -38,9 +63,10 @@ cp /vagrant/config/cache_store.yml /vagrant/canvas/config/cache_store.yml
 cp /vagrant/config/redis.yml /vagrant/canvas/config/redis.yml
 cp /vagrant/config/domain.yml /vagrant/canvas/config/domain.yml
 
-cd /vagrant/canvas
-gem install bundler
-bundle install --without mysql
-expect-lite -c /vagrant/config/db-initial-setup.elt
-bundle exec rake canvas:compile_assets
-bundle exec script/server
+echo 'cd /vagrant/canvas' >> ~/.bash_profile
+
+# bundle install --without mysql
+# expect-lite -c /vagrant/config/db-initial-setup.elt
+# bundle exec rake canvas:compile_assets
+# bundle exec script/server
+
