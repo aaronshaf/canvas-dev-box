@@ -1,5 +1,5 @@
 @220
->sudo bundle exec rake db:initial_setup
+>bundle exec rake db:initial_setup
 <<What email address will the site administrator account use?
 >a@a.com
 <<Please confirm
