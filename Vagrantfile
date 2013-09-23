@@ -14,6 +14,5 @@ Vagrant.configure("2") do |config|
   config.vm.network :private_network, ip: ip_address
   config.vm.synced_folder ".", "/vagrant/", nfs: true
 
-  # config.vm.provision :shell, :path => "bootstrap.sh"
-  # config.vm.provision :shell, :inline => "su -c 'sh /vagrant/bootstrap.sh' -s /bin/sh vagrant"
+  config.vm.provision :shell, :path => "bootstrap.sh"
 end
