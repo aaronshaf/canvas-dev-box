@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.host_name = 'canvas-dev-box'
 
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ["modifyvm", :id, "--memory", "1536"]
   end
 
   config.vm.network :forwarded_port, guest: 3000, host: 3000
