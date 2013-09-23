@@ -20,7 +20,16 @@ Eat breakfast. With the precise32.box already downloaded, it took about 25-30 mi
 
 Open [http://localhost:3000](http://localhost:3000) in your browser. Your initial Canvas user is ```a@a.com``` with a password of ```password```.
 
-To SSH into the guest machine, ```vagrant ssh``` from your project directory. You will probably want to start guard:
+To SSH into the guest machine, ```vagrant ssh``` from your project directory. If it's your first time, you'll want to do:
+
+```
+cd /vagrant/canvas
+bundle exec rake db:initial_setup
+sudo bundle exec rake canvas:compile_assets
+sudo bundle exec script/server
+```
+
+ You will probably want to start guard:
 
 ```
 cd /vagrant/canvas
