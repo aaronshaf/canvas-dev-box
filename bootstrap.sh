@@ -2,13 +2,13 @@ echo
 echo --- installing some basic dependencies ---
 echo
 
+# echo "deb http://archive.ubuntu.com/ubuntu precise universe" >> /etc/apt/sources.list
+
 sudo apt-get update -qq
-sudo apt-get install python-software-properties git-core python g++ make \
-  zlib1g-dev  \
-  libxml2-dev libxslt1-dev libsqlite3-dev  \
-  imagemagick  libxmlsec1-dev postgresql \
-  python-software-properties libcurl3-dev libpq-dev \
-  expect-lite screen --quiet -y
+
+sudo apt-get install git-core python-software-properties python g++ make \
+  zlib1g-dev libxml2-dev libxslt1-dev libsqlite3-dev  \
+  imagemagick libxmlsec1-dev libcurl3-dev libpq-dev screen -y --quiet
 
 echo 
 echo --- installing redis ---
@@ -28,25 +28,10 @@ sudo apt-get install nodejs -y
 sudo npm install -g coffee-script --quiet -y
 
 echo 
-echo --- installing ruby, bundler ---
+echo --- installing postgresql ---
 echo
 
-git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-export PATH="$HOME/.rbenv/bin:$PATH"
-echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-eval "$(rbenv init -)"
-rbenv install 1.9.3-p448
-rbenv rehash
-
-rm -fr ~/.rbenv/plugins/bundler
-git clone git://github.com/carsomyr/rbenv-bundler.git ~/.rbenv/plugins/bundler
-
-cd /vagrant/canvas
-rbenv global 1.9.3-p448
-gem install bundler
-
+sudo apt-get install postgresql --quiet -y
 sudo su -l postgres -c 'psql -c "CREATE ROLE root WITH SUPERUSER LOGIN;"'
 sudo su -l postgres -c 'psql -c "CREATE ROLE vagrant WITH SUPERUSER LOGIN;"'
 sudo su -l postgres -c 'createdb canvas_development'
@@ -63,10 +48,22 @@ cp /vagrant/config/cache_store.yml /vagrant/canvas/config/cache_store.yml
 cp /vagrant/config/redis.yml /vagrant/canvas/config/redis.yml
 cp /vagrant/config/domain.yml /vagrant/canvas/config/domain.yml
 
-echo 'cd /vagrant/canvas' >> ~/.bash_profile
+echo 
+echo --- ruby ---
+echo
 
-# bundle install --without mysql
-# expect-lite -c /vagrant/config/db-initial-setup.elt
-# bundle exec rake canvas:compile_assets
-# bundle exec script/server
+sudo apt-get install ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 libhttpclient-ruby --quiet -y
+sudo update-alternatives --set ruby /usr/bin/ruby1.9.1
 
+echo
+echo --- bundler ---
+echo
+
+sudo su vagrant
+mkdir /home/vagrant/gems
+export GEM_HOME=/home/vagrant/gems
+cd /vagrant/canvas
+sudo gem install bundler
+bundle install --without mysql
+sudo echo "cd /vagrant/canvas" >> /home/vagrant/.bash_profile
+sudo echo "export GEM_HOME=~/gems" >> /home/vagrant/.bash_profile
